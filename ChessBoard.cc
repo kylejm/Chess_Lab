@@ -21,16 +21,6 @@ ChessBoard::ChessBoard(int numRow, int numCol)
     }
 }
 
-int ChessBoard::getNumRows()
-{
-    return numRows;
-}
-
-int ChessBoard::getNumCols()
-{
-    return numCols;
-}
-
 void ChessBoard::createChessPiece(Color col, Type ty, int startRow, int startColumn)
 {
     // Check if the position is valid
