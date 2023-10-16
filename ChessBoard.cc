@@ -64,7 +64,6 @@ void ChessBoard::createChessPiece(Color col, Type ty, int startRow, int startCol
     }
 }
 
-
 bool ChessBoard::movePiece(int startRow, int startColumn, int endRow, int endColumn)
 {
     return true;
