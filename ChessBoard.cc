@@ -6,7 +6,6 @@
 
 using Student::ChessBoard;
 
-// Constructor for ChessBoard class
 ChessBoard::ChessBoard(int numRow, int numCol)
 {
     numRows = numRow;
@@ -22,22 +21,30 @@ ChessBoard::ChessBoard(int numRow, int numCol)
     }
 }
 
-// Number of rows in chess board
 int ChessBoard::getNumRows()
 {
     return numRows;
 }
 
-// Number of columns in chess board
 int ChessBoard::getNumCols()
 {
     return numCols;
 }
 
-// Creates a new chess piece 
 void ChessBoard::createChessPiece(Color col, Type ty, int startRow, int startColumn)
 {
-    ChessPiece *piece = nullptr;
+    // Check if the position is valid
+    if(startRow < 0 || startRow >= numRows || startColumn < 0 || startColumn >= numCols)
+    {
+        return;
+    }
+
+    // Remove any existing piece first
+    ChessPiece* existingPiece = board.at(startRow).at(startColumn);
+    delete existingPiece;
+    board.at(startRow).at(startColumn) = nullptr;
+
+    // Allocate memory and assign address for the new piece
     switch (ty)
     {
     case Pawn:
@@ -55,21 +62,45 @@ void ChessBoard::createChessPiece(Color col, Type ty, int startRow, int startCol
     default:
         break;
     }
-    board.at(startRow).at(startColumn) = piece;
 }
 
-// Moves a chess piece
+
 bool ChessBoard::movePiece(int startRow, int startColumn, int endRow, int endColumn)
 {
-    ChessPiece *piece = board.at(startRow).at(startColumn);
-    if (piece == nullptr)
-    {
-        return false;
-    }
-    return false;
+    return true;
 }
 
-// Displays the chess board
+bool ChessBoard::isValidMove(int fromRow, int fromColumn, int toRow, int toColumn) {
+    // Ensure that the starting and ending positions are within the board
+    if (fromRow < 0 || fromColumn < 0 || toRow < 0 || toColumn < 0 || 
+        fromRow >= numRows || fromColumn >= numCols || toRow >= numRows || toColumn >= numCols) {
+        return false;
+    }
+
+    // Check if there is a piece at the starting position
+    ChessPiece* piece = getPiece(fromRow, fromColumn);
+    if (piece == nullptr) {
+        return false;
+    }
+
+    // If there is a piece at the destination, check if it is the same color
+    ChessPiece* destinationPiece = getPiece(toRow, toColumn);
+    if (destinationPiece != nullptr && destinationPiece->getColor() == piece->getColor()) {
+        return false;
+    }
+
+    // Check if the piece can move to the destination
+    if (!piece->canMoveToLocation(toRow, toColumn)) {
+        return false;
+    }
+    
+    return true;
+}
+
+bool ChessBoard::isPieceUnderThreat(int row, int column) {
+    return true;
+}
+
 std::ostringstream ChessBoard::displayBoard()
 {
     std::ostringstream outputString;
