@@ -18,5 +18,30 @@ Color ChessPiece::getColor() {
 }
 
 Type ChessPiece::getType() {
-    return 
+    //return _type;
+}
+
+int ChessPiece::getRow() {
+    return _row;
+}
+
+int ChessPiece::getColumn() {
+    return _column;
+}
+
+void ChessPiece::setPosition(int row, int column) {
+    _row = row;
+    _column = column;
+}
+
+bool ChessPiece::canMoveToLocation(int toRow, int toColumn) {
+    return false;
+}
+
+const char *ChessPiece::toString() {
+    return nullptr;
+}
+
+ChessPiece::~ChessPiece() {
+    delete this;
 }

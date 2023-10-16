@@ -17,6 +17,8 @@ namespace Student
 
         virtual bool canMoveToLocation(int toRow, int toColumn) override;
         virtual const char *toString() override;
+    private:
+        Type _type = Pawn;
     };
 }
 
