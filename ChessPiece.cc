@@ -18,7 +18,7 @@ Color ChessPiece::getColor() {
 }
 
 Type ChessPiece::getType() {
-    //return _type;
+    return Pawn;
 }
 
 int ChessPiece::getRow() {

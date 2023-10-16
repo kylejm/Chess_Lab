@@ -14,6 +14,7 @@
     Color _color;
     int _row;
     int _column;
+    Type _type;
 
   public:
     /**
@@ -50,7 +51,7 @@
      * would have been to define this function as pure virtual and
      * let each derived class override this function.
      */
-    Type getType();
+    virtual Type getType();
 
     /**
      * @return

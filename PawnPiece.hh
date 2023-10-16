@@ -14,7 +14,7 @@ namespace Student
     public:
         PawnPiece(ChessBoard &board, Color color, int row, int column);
         virtual ~PawnPiece() override;
-
+        virtual Type getType() override;
         virtual bool canMoveToLocation(int toRow, int toColumn) override;
         virtual const char *toString() override;
     private:

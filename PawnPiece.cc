@@ -9,3 +9,14 @@ using Student::PawnPiece;
 PawnPiece::PawnPiece(ChessBoard &board, Color color, int row, int column) : ChessPiece(board, color, row, column) {
 
 }
+
+PawnPiece::~PawnPiece() {
+    delete this;
+}
+
+bool PawnPiece::canMoveToLocation(int toRow, int toColumn) {    
+}
+
+Type PawnPiece::getType() {
+    return _type;
+}
