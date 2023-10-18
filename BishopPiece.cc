@@ -10,8 +10,37 @@ BishopPiece::BishopPiece(ChessBoard &board, Color color, int row, int column) : 
     _type = Bishop;
 }
 
-bool BishopPiece::canMoveToLocation(int toRow, int toColumn) { 
-    return false;   
+bool BishopPiece::canMoveToLocation(int toRow, int toColumn) {
+    int rowDifference = abs(toRow - getRow());
+    int colDifference = abs(toColumn - getColumn());
+
+    // Check if movement is diagonal
+    if (rowDifference != colDifference) {
+        return false;
+    }
+
+    // Calculate the direction of movement
+    int rowDirection = (toRow > getRow()) ? 1 : -1;
+    int colDirection = (toColumn > getColumn()) ? 1 : -1;
+
+    // Check the path for other pieces
+    int currentRow = getRow() + rowDirection;
+    int currentCol = getColumn() + colDirection;
+    while (currentRow != toRow && currentCol != toColumn) {
+        if (board.getPiece(currentRow, currentCol) != nullptr) {
+            return false; // A piece is blocking the path
+        }
+        currentRow += rowDirection;
+        currentCol += colDirection;
+    }
+
+    // Destination should be either empty or occupied by an opponent's piece
+    ChessPiece *destinationPiece = board.getPiece(toRow, toColumn);
+    if (destinationPiece != nullptr && destinationPiece->getColor() == getColor()) {
+        return false; // Can't capture own piece
+    }
+
+    return true;
 }
 
 Type BishopPiece::getType() {
@@ -20,9 +49,9 @@ Type BishopPiece::getType() {
 
 const char *BishopPiece::toString() {
     if (getColor() == White) {
-        return u8"\2657";
+        return "\u2657";
     }
     else {
-        return u8"\265D";
+        return "\u265D";
     }
 }

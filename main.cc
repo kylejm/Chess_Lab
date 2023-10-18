@@ -1,4 +1,5 @@
 #include <assert.h>
+#include <iostream>
 #include "Chess.h"
 #include "ChessBoard.hh"
 #include "ChessPiece.hh"
@@ -14,8 +15,6 @@ void test_part1_4x4_1()
     // w r 2 3
     // ~
     // isValidScan
-
-    printf(u8"\2658");
 
     // Corresponding code
     Student::ChessBoard sBoard(4, 4);

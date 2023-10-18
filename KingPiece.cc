@@ -20,9 +20,9 @@ Type KingPiece::getType() {
 
 const char *KingPiece::toString() {
     if (getColor() == White) {
-        return u8"\2657";
+        return "\u2657";
     }
     else {
-        return u8"\265D";
+        return "\u265D";
     }
 }
