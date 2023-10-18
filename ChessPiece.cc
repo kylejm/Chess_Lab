@@ -41,7 +41,3 @@ bool ChessPiece::canMoveToLocation(int toRow, int toColumn) {
 const char *ChessPiece::toString() {
     return nullptr;
 }
-
-ChessPiece::~ChessPiece() {
-    delete this;
-}

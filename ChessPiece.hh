@@ -14,8 +14,7 @@
     Color _color;
     int _row;
     int _column;
-    Type _type;
-
+ 
   public:
     /**
      * @brief

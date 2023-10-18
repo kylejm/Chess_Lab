@@ -15,6 +15,8 @@ void test_part1_4x4_1()
     // ~
     // isValidScan
 
+    printf(u8"\2658");
+
     // Corresponding code
     Student::ChessBoard sBoard(4, 4);
     sBoard.createChessPiece(White, Rook, 3, 2);

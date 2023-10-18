@@ -7,16 +7,22 @@
 using Student::PawnPiece;
 
 PawnPiece::PawnPiece(ChessBoard &board, Color color, int row, int column) : ChessPiece(board, color, row, column) {
-
+    _type = Pawn;
 }
 
-PawnPiece::~PawnPiece() {
-    delete this;
-}
-
-bool PawnPiece::canMoveToLocation(int toRow, int toColumn) {    
+bool PawnPiece::canMoveToLocation(int toRow, int toColumn) {  
+    return false;  
 }
 
 Type PawnPiece::getType() {
     return _type;
+}
+
+const char *PawnPiece::toString() {
+    if (getColor() == White) {
+        return u8"\2659";
+    }
+    else {
+        return u8"\265F";
+    }
 }
