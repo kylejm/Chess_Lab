@@ -46,6 +46,9 @@ void ChessBoard::createChessPiece(Color col, Type ty, int startRow, int startCol
     case Bishop:
         board.at(startRow).at(startColumn) = new BishopPiece(*this, col, startRow, startColumn);
         break;
+    case King:
+        board.at(startRow).at(startColumn) = new KingPiece(*this, col, startRow, startColumn);
+        break;
     default:
         break;
     }
