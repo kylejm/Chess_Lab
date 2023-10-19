@@ -71,11 +71,6 @@ bool ChessBoard::isValidMove(int fromRow, int fromColumn, int toRow, int toColum
         return false;
     }
 
-    // Ensure the piece that moves is of the same same color
-    if (getPiece(fromRow, fromColumn)->getColor() != turn) {
-        return false;
-    }
-
     // Check if there is a piece at the starting position
     ChessPiece* piece = getPiece(fromRow, fromColumn);
     if (piece == nullptr) {
